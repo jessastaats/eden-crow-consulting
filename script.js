@@ -1,44 +1,56 @@
 (() => {
   'use strict';
 
-  // Visual refinements: preserve the original logo artwork, improve visibility on dark backgrounds,
-  // and simplify service-card styling without changing the site's structure or copy.
+  // Visual refinements: keep the full original logo visible and simplify service cards.
   const refinementStyles = document.createElement('style');
   refinementStyles.textContent = `
     .brand {
-      width: 210px !important;
-      height: 76px !important;
+      width: 224px !important;
+      height: 78px !important;
+      display: flex !important;
+      align-items: center !important;
       overflow: visible !important;
-      padding: 4px 0 !important;
+      padding: 5px 0 !important;
     }
 
     .brand img {
+      display: block !important;
       width: 100% !important;
       height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
       object-fit: contain !important;
       object-position: left center !important;
-      filter: brightness(1.22) contrast(1.08) !important;
+      filter: brightness(1.38) contrast(1.12) !important;
     }
 
     .logo-frame {
       overflow: visible !important;
+      padding: 24px !important;
     }
 
     .logo-frame img {
+      display: block !important;
       width: 100% !important;
       height: auto !important;
+      max-height: none !important;
       object-fit: contain !important;
-      filter: brightness(1.14) contrast(1.05) !important;
+      object-position: center !important;
+      filter: brightness(1.24) contrast(1.08) !important;
     }
 
     .service-icon {
       display: none !important;
     }
 
+    .service-card {
+      min-height: 330px !important;
+    }
+
     .service-card h3 {
       position: relative !important;
       min-height: 0 !important;
-      padding-top: 26px !important;
+      padding-top: 24px !important;
       margin-top: 0 !important;
     }
 
@@ -47,19 +59,23 @@
       position: absolute !important;
       top: 0 !important;
       left: 0 !important;
-      width: 46px !important;
+      width: 48px !important;
       height: 1px !important;
       background: #b99554 !important;
     }
 
     @media (max-width: 900px) {
       .brand {
-        width: 185px !important;
-        height: 72px !important;
+        width: 202px !important;
+        height: 76px !important;
       }
 
       .nav-wrap {
-        height: 84px !important;
+        height: 88px !important;
+      }
+
+      .site-nav {
+        top: 88px !important;
       }
 
       .service-grid {
@@ -73,12 +89,21 @@
       }
 
       .brand {
-        width: 168px !important;
-        height: 70px !important;
+        width: 190px !important;
+        height: 76px !important;
+        padding: 3px 0 !important;
+      }
+
+      .brand img {
+        filter: brightness(1.45) contrast(1.12) !important;
       }
 
       .nav-wrap {
-        height: 82px !important;
+        height: 86px !important;
+      }
+
+      .site-nav {
+        top: 86px !important;
       }
 
       .service-grid {
@@ -105,10 +130,12 @@
       }
 
       .logo-frame {
-        padding: 20px !important;
+        padding: 18px !important;
       }
 
       .hero-mark img {
+        width: 100% !important;
+        height: auto !important;
         max-height: none !important;
         object-fit: contain !important;
       }
