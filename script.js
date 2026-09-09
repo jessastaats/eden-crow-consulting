@@ -221,13 +221,7 @@
       return;
     }
 
-    const endpoint = form.dataset.endpoint?.trim();
-
-    if (!endpoint) {
-      status.classList.add('error');
-      status.textContent = 'The inquiry form is ready, but it still needs to be connected to the business email or form service before it can send submissions.';
-      return;
-    }
+    const endpoint = form.dataset.endpoint?.trim() || 'https://formsubmit.co/ajax/info@edencrowconsulting.com';
 
     const submitButton = form.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
@@ -235,9 +229,14 @@
     submitButton.textContent = 'Submitting…';
 
     try {
+      const formData = new FormData(form);
+      formData.append('_subject', 'New Eden & Crow Project Inquiry');
+      formData.append('_template', 'table');
+      formData.append('_url', 'https://edencrowconsulting.com/');
+
       const response = await fetch(endpoint, {
         method: 'POST',
-        body: new FormData(form),
+        body: formData,
         headers: { Accept: 'application/json' }
       });
 
