@@ -1,6 +1,121 @@
 (() => {
   'use strict';
 
+  // Visual refinements: preserve the original logo artwork, improve visibility on dark backgrounds,
+  // and simplify service-card styling without changing the site's structure or copy.
+  const refinementStyles = document.createElement('style');
+  refinementStyles.textContent = `
+    .brand {
+      width: 210px !important;
+      height: 76px !important;
+      overflow: visible !important;
+      padding: 4px 0 !important;
+    }
+
+    .brand img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      object-position: left center !important;
+      filter: brightness(1.22) contrast(1.08) !important;
+    }
+
+    .logo-frame {
+      overflow: visible !important;
+    }
+
+    .logo-frame img {
+      width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+      filter: brightness(1.14) contrast(1.05) !important;
+    }
+
+    .service-icon {
+      display: none !important;
+    }
+
+    .service-card h3 {
+      position: relative !important;
+      min-height: 0 !important;
+      padding-top: 26px !important;
+      margin-top: 0 !important;
+    }
+
+    .service-card h3::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 46px !important;
+      height: 1px !important;
+      background: #b99554 !important;
+    }
+
+    @media (max-width: 900px) {
+      .brand {
+        width: 185px !important;
+        height: 72px !important;
+      }
+
+      .nav-wrap {
+        height: 84px !important;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(calc(100% - 28px), var(--container)) !important;
+      }
+
+      .brand {
+        width: 168px !important;
+        height: 70px !important;
+      }
+
+      .nav-wrap {
+        height: 82px !important;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .service-card {
+        min-height: 0 !important;
+        padding: 30px 24px !important;
+      }
+
+      .service-card h3 {
+        font-size: 1.35rem !important;
+        padding-top: 22px !important;
+      }
+
+      .service-card ul {
+        margin-top: 18px !important;
+      }
+
+      .hero-mark,
+      .logo-frame {
+        overflow: visible !important;
+      }
+
+      .logo-frame {
+        padding: 20px !important;
+      }
+
+      .hero-mark img {
+        max-height: none !important;
+        object-fit: contain !important;
+      }
+    }
+  `;
+  document.head.appendChild(refinementStyles);
+
   const menuButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
 
